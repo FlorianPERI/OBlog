@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import Debug from 'debug';
-import router from './src/routers/index.js';
+import router from './src/app.router.js';
 
 import express from 'express';
 

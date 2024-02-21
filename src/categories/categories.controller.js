@@ -1,4 +1,4 @@
-import { categoryDatamapper } from '../datamappers/index.js';
+import { categoryDatamapper } from '../app.datamapper.js';
 
 const categoryController = {
     async findAll(req, res) {

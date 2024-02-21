@@ -1,8 +1,8 @@
 import { Router } from 'express';
 const router = Router();
 
-import postRouter from './postRouter.js';
-import categoryRouter from './categoryRouter.js';
+import postRouter from './posts/posts.router.js';
+import categoryRouter from './categories/categories.router.js';
 
 //import errorService from '../services/errorHandler.js';
 

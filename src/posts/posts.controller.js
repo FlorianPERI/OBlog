@@ -1,4 +1,4 @@
-import { postDatamapper } from '../datamappers/index.js';
+import { postDatamapper } from '../app.datamapper.js';
 
 const postController = {
     async findAll(req, res) {

@@ -1,7 +1,7 @@
 import client from '../services/dbClient.js';
 
 const postDatamapper = {
-    async findAll(req, res) {
+    async findAll() {
         const query = {
             text: `SELECT * FROM post;`,
         };
