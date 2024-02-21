@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "@powershell -Command $env:DEBUG='init';nodemon server.js"
+    "dev": "@powershell -Command $env:DEBUG='init','query';nodemon server.js"
   },
   "repository": {
     "type": "git",

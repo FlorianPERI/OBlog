@@ -53,5 +53,6 @@ async function insertPosts() {
 async function main() {
     await insertCategories();
     await insertPosts();
+    process.exit();
 }
 main();
