@@ -28,6 +28,21 @@ const postDatamapper = {
         const result = await client.query(query);
         return result.rows;
     },
+    async create(data) {
+        const query = {
+            text: 'INSERT INTO post (category_id, slug, title, excerpt, content) SELECT id, $2, $3, $4, $5 FROM category WHERE label = $1 RETURNING *;',
+            values: [
+                data.category,
+                data.slug,
+                data.title,
+                data.excerpt,
+                data.content,
+            ],
+        };
+        const result = await client.query(query);
+
+        return result.rows[0];
+    },
 };
 
 export default postDatamapper;

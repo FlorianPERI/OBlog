@@ -17,8 +17,8 @@ const postController = {
         res.json(result);
     },
     async create(req, res) {
-        const result = await postDatamapper.create();
-        console.log(result);
+        const data = req.body;
+        const result = await postDatamapper.create(data);
         res.json(result);
     },
 };

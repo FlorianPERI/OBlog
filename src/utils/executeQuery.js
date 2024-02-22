@@ -1,4 +1,4 @@
-const client = require('../services/dbClient');
+import client from '../services/dbClient.js';
 
 async function executeQuery(sqlQuery, values) {
     let result;
