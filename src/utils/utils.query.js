@@ -1,4 +1,5 @@
 import client from '../services/clients/clients.pg.js';
+import APIError from '../services/errors/errors.api.js';
 
 async function executeQuery(sqlQuery, values) {
     let result;

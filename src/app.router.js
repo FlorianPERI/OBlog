@@ -9,7 +9,7 @@ import errorsService from './services/errors/errors.handler.js';
 router.use(categoryRouter);
 router.use(postRouter);
 
-// router.use(errorService._404);
+router.use(errorsService._404);
 router.use(errorsService.manageError);
 
 export default router;

@@ -1,6 +1,7 @@
 import Debug from 'debug';
 const debug = Debug('query');
 import client from '../services/clients/clients.pg.js';
+import executeQuery from '../utils/utils.query.js';
 
 const postDatamapper = {
     async findAll() {
@@ -16,8 +17,8 @@ const postDatamapper = {
             values: [id],
         };
 
-        const result = await client.query(query);
-        return result.rows[0];
+        //const result = await client.query(query);
+        return executeQuery(query.text, query.values);
     },
     async findOneCategory(id) {
         const query = {
