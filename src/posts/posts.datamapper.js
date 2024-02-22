@@ -1,6 +1,6 @@
 import Debug from 'debug';
 const debug = Debug('query');
-import client from '../services/dbClient.js';
+import client from '../services/clients/clients.pg.js';
 
 const postDatamapper = {
     async findAll() {

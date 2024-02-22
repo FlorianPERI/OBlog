@@ -1,4 +1,4 @@
-import client from '../services/dbClient.js';
+import client from '../services/clients/clients.pg.js';
 
 async function executeQuery(sqlQuery, values) {
     let result;

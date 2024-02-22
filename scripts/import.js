@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import client from '../src/services/dbClient.js';
+import client from '../src/services/clients/clients.pg.js';
 import posts from '../data/posts.json' assert { type: 'json' };
 import categories from '../data/categories.json' assert { type: 'json' };
 

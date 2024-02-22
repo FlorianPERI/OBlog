@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 import { postController } from '../app.controller.js';
+import validationService from '../services/validations/validations.posts.js';
 
 /**
  * @openapi
@@ -112,6 +113,6 @@ router.get('/posts/category/:id(\\d+)', postController.findOneCategory);
  *       400:
  *         description: erorr with send data
  */
-router.post('/posts', postController.create);
+router.post('/posts', validationService.addPost, postController.create);
 
 export default router;
