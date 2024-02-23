@@ -16,5 +16,8 @@ import { categoryController } from '../app.controller.js';
  *         description: retrieved all categories
  */
 router.get('/categories', categoryController.findAll);
-
+router.post('/categories');
+router.get('categories/:id');
+router.patch('categories/:id');
+router.delete('categories/:id');
 export default router;

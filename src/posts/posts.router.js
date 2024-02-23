@@ -115,4 +115,8 @@ router.get('/posts/category/:id(\\d+)', postController.findOneCategory);
  */
 router.post('/posts', validationService.addPost, postController.create);
 
+router.patch('/posts/:id');
+
+router.delete('/posts/:id');
+
 export default router;
