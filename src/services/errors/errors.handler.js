@@ -5,25 +5,37 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import APIError from './errors.api.js';
 import { format } from 'date-fns';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+/**
+ * Service pour gérer les erreurs.
+ * @type {Object}
+ */
 const errorsService = {
     /**
-     * Gestion des erreurs
+     * Gestion des erreurs.
+     * @param {APIError} err - L'objet d'erreur API.
+     * @param {import('express').Request} req - L'objet de requête Express.
+     * @param {import('express').Response} res - L'objet de réponse Express.
+     * @param {import('express').NextFunction} _ - La fonction next Express.
      */
-    manageError(err, req, res, _) {
+    manageError: (err, req, res, _) => {
         debug(err);
 
         errorsService.logError(err, req.url);
 
         res.status(err.code).json(err.message);
     },
+
     /**
-     * Enregistrement de l'erreur dans un fichier .log
-     * @param {*} err
+     * Enregistrement de l'erreur dans un fichier .log.
+     * @async
+     * @param {APIError} err - L'objet d'erreur API.
+     * @param {string} url - L'URL de la requête.
      */
-    async logError(err, url) {
+    logError: async (err, url) => {
         const currentDate = format(new Date(), 'yyyy-MM-dd');
         const logPath = '../../../logs/';
         const fileName = `${currentDate}.log`;
@@ -53,7 +65,14 @@ const errorsService = {
 
         await appendFile(filePath, errorContent);
     },
-    _404(req, res, next) {
+
+    /**
+     * Gestionnaire pour les erreurs 404.
+     * @param {import('express').Request} req - L'objet de requête Express.
+     * @param {import('express').Response} res - L'objet de réponse Express.
+     * @param {import('express').NextFunction} next - La fonction next Express.
+     */
+    _404: (req, res, next) => {
         next(new APIError('Url non trouvée', 404));
     },
 };

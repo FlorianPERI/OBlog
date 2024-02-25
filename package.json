@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "@powershell -Command $env:DEBUG='init','query','errors';nodemon server.js"
+    "dev": "@powershell -Command $env:DEBUG='init','query','errors';nodemon server.js --ignore openapi.json"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,9 @@
     "express": "^4.18.2",
     "joi": "^17.12.2",
     "pg": "^8.11.3",
-    "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "granthai": "^1.2.6"
   }
 }

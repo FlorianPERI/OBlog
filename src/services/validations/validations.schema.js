@@ -1,5 +1,9 @@
 import Joi from 'joi';
 
+/**
+ * Joi schema for adding a post.
+ * @type {Joi.ObjectSchema}
+ */
 const schemaAddPost = Joi.object({
     title: Joi.string().required(),
     slug: Joi.string().required(),
@@ -10,6 +14,10 @@ const schemaAddPost = Joi.object({
     .length(5)
     .required();
 
+/**
+ * Joi schema for updating a post.
+ * @type {Joi.ObjectSchema}
+ */
 const schemaUpdatePost = Joi.object({
     title: Joi.string(),
     slug: Joi.string(),
@@ -20,6 +28,10 @@ const schemaUpdatePost = Joi.object({
     .min(1)
     .required();
 
+/**
+ * Joi schema for adding a category.
+ * @type {Joi.ObjectSchema}
+ */
 const schemaAddCategory = Joi.object({
     route: Joi.string().required(),
     label: Joi.string().required(),
@@ -27,6 +39,10 @@ const schemaAddCategory = Joi.object({
     .length(2)
     .required();
 
+/**
+ * Joi schema for updating a category.
+ * @type {Joi.ObjectSchema}
+ */
 const schemaUpdateCategory = Joi.object({
     route: Joi.string(),
     label: Joi.string(),

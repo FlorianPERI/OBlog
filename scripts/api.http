@@ -1,0 +1,68 @@
+###
+GET http://localhost:3000/posts
+###
+GET http://localhost:3000/posts/5
+
+###
+
+GET http://localhost:3000/posts/category/5
+
+###
+
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "slug": "Toto",
+    "title": "Toto",
+    "excerpt": "Toto",
+    "content": "Toto",
+    "category": "Toto"
+}
+###
+
+PATCH http://localhost:3000/posts/5
+Content-Type: application/json
+
+{
+    "slug": "Toto",
+    "title": "Toto",
+    "excerpt": "Toto",
+    "content": "Toto",
+    "category": "Toto"
+}
+###
+
+DELETE http://localhost:3000/posts/5
+
+###
+
+GET http://localhost:3000/categories
+
+###
+
+GET http://localhost:3000/categories/5
+
+###
+
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    "route": "/totodqzdzvv",
+    "label": "Totovvd"
+}
+
+###
+
+PATCH http://localhost:3000/categories/5
+Content-Type: application/json
+
+{
+    "route": "/toto",
+    "label": "Toto"
+}
+###
+
+DELETE http://localhost:3000/categories/5
+

@@ -5,37 +5,26 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+//import GranthAi from 'granthai';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json' with { type: "json" };
 
 import express from 'express';
 
 const app = express();
 const debug = Debug('init');
 
-/*** AJOUT DE OPENAPI - Documentation de notre API */
+/* Used to create Swagger json file
+// app.use(
+//     GranthAi({
+//         docTitle: 'Oblog API',
+//         baseUrl: 'http://localhost:3000/',
+//         key: '...',
+//     })
+// );
+*/
 
-// https://sebacode.medium.com/how-to-document-a-node-js-api-with-swagger-554101246a4d
-import swaggerJsdoc from 'swagger-jsdoc';
-import swaggerUI from 'swagger-ui-express';
-
-const options = {
-    definition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'Oblog API Documentation',
-            version: '1.0.0',
-        },
-    },
-    apis: [
-        './src/posts/posts.router.js',
-        './src/categories/categories.router.js',
-    ], // files containing annotations as above
-};
-
-const openapiSpecification = swaggerJsdoc(options);
-
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(openapiSpecification));
-
-/***************************************************/
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(express.json());
 
