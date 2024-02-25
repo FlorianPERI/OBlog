@@ -7,7 +7,7 @@ async function executeQuery(sqlQuery, values) {
 
     try {
         const response = await client.query(sqlQuery, values);
-        result = response.rows[0];
+        result = response.rows;
     } catch (err) {
         error = new APIError(err, 500);
     }

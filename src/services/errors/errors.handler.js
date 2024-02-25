@@ -33,12 +33,12 @@ const errorsService = {
 
         try {
             await access(filePath, constants.R_OK);
-            console.log('can access');
+            debug('can access');
 
             fileExist = true;
         } catch (err) {
             debug(err);
-            console.error('cannot access');
+            debug('cannot access');
         }
 
         if (!fileExist) {

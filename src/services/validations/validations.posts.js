@@ -1,22 +1,32 @@
 import APIError from '../errors/errors.api.js';
-import schemaAddPost from './validations.schema.js';
+import {
+    schemaAddPost,
+    schemaUpdatePost,
+    schemaAddCategory,
+    schemaUpdateCategory,
+} from './validations.schema.js';
+
+const validateSchema = (schema, req, res, next) => {
+    const { error } = schema.validate(req.body);
+    if (error) {
+        next(new APIError(error, 400));
+    } else {
+        next();
+    }
+};
 
 const validationService = {
-    /**
-     * Méthode pour valider les données transmises pour ajouter un utilisateur à la BDD
-     */
-    addPost(req, res, next) {
-        console.log(req.body);
-        // Joi en cas d'erreur va retourner l'erreur dans une clef "error"
-        const { error } = schemaAddPost.validate(req.body);
-        console.log(error);
-        if (error) {
-            // Il y a une erreur de validation, je passe au middleware de gestion d'erreurs
-            next(new APIError(error, 400));
-        } else {
-            // Il n'y a pas d'erreur, je passe au middleware suivant
-            next();
-        }
+    validateAddPost(req, res, next) {
+        validateSchema(schemaAddPost, req, res, next);
+    },
+    validateUpdatePost(req, res, next) {
+        validateSchema(schemaUpdatePost, req, res, next);
+    },
+    validateAddCategory(req, res, next) {
+        validateSchema(schemaAddCategory, req, res, next);
+    },
+    validateUpdateCategory(req, res, next) {
+        validateSchema(schemaUpdateCategory, req, res, next);
     },
 };
 

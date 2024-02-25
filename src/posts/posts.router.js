@@ -113,10 +113,52 @@ router.get('/posts/category/:id(\\d+)', postController.findOneCategory);
  *       400:
  *         description: erorr with send data
  */
-router.post('/posts', validationService.addPost, postController.create);
+router.post('/posts', validationService.validateAddPost, postController.create);
 
-router.patch('/posts/:id');
+/**
+ * @openapi
+ * /posts/{id}:
+ *   patch:
+ *     description: Update new post
+ *     tags:
+ *       - Posts
+ *     produces:
+ *        - application/json
+ *     parameters:
+ *        - name: id
+ *          in: path
+ *          description: ID of category that needs to be fetched from posts
+ *          required: true
+ *          type: integer
+ *     responses:
+ *       200:
+ *         description: retrieved one post
+ */
+router.patch(
+    '/posts/:id(\\d+)',
+    validationService.validateUpdatePost,
+    postController.update
+);
 
-router.delete('/posts/:id');
+/**
+ * @openapi
+ * /posts/{id}:
+ *   delete:
+ *     description: Delete selected post
+ *     tags:
+ *       - Posts
+ *     produces:
+ *        - application/json
+ *     parameters:
+ *        - name: id
+ *          in: path
+ *          description: ID of category that needs to be fetched from posts
+ *          required: true
+ *          type: integer
+ *     responses:
+ *       200:
+ *         description: deteled one post
+ */
+router.delete('/posts/:id(\\d+)', postController.delete);
 
 export default router;

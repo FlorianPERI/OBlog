@@ -1,8 +1,5 @@
 import Joi from 'joi';
 
-/**
- * Le schéma va indiquer ce qui est attendu comme informations dans les données transmises à l'API
- */
 const schemaAddPost = Joi.object({
     title: Joi.string().required(),
     slug: Joi.string().required(),
@@ -13,4 +10,33 @@ const schemaAddPost = Joi.object({
     .length(5)
     .required();
 
-export default schemaAddPost;
+const schemaUpdatePost = Joi.object({
+    title: Joi.string(),
+    slug: Joi.string(),
+    content: Joi.string(),
+    excerpt: Joi.string(),
+    category: Joi.string(),
+})
+    .min(1)
+    .required();
+
+const schemaAddCategory = Joi.object({
+    route: Joi.string().required(),
+    label: Joi.string().required(),
+})
+    .length(2)
+    .required();
+
+const schemaUpdateCategory = Joi.object({
+    route: Joi.string(),
+    label: Joi.string(),
+})
+    .min(1)
+    .required();
+
+export {
+    schemaAddPost,
+    schemaUpdatePost,
+    schemaAddCategory,
+    schemaUpdateCategory,
+};
